@@ -12,7 +12,7 @@ try {
 	) );
 	\Framework\Registry::set( "router", $router );
 	foreach ( \app\configuration\Routes::$routes as $route ) {
-		$router->addRoute( $route );
+		$router->addRoute( new \Framework\Route( $route ) );
 	}
 
 } catch ( Exception $e ) {

@@ -20,11 +20,11 @@ class Router {
 	/**
 	 * Adds a route in the Router
 	 *
-	 * @param $route
+	 * @param Route $route
 	 *
 	 * @return $this
 	 */
-	public function addRoute( $route ) {
+	public function addRoute( Route $route ) {
 
 		$this->_routes[] = $route;
 
