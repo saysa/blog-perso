@@ -7,7 +7,9 @@ try {
 	require( "../Framework/Core.php" );
 	Framework\Core::initialize();
 
-	$router = new \Framework\Router();
+	$router = new \Framework\Router( array(
+		"url" => trim( $_SERVER['REQUEST_URI'], "/" ),
+	) );
 	\Framework\Registry::set( "router", $router );
 	foreach ( \app\configuration\Routes::$routes as $route ) {
 		$router->addRoute( $route );

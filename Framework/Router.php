@@ -9,6 +9,14 @@ class Router {
 	protected $_action;
 	protected $_routes = array();
 
+	public function __construct( $options = array() ) {
+
+		foreach ( $options as $key => $value ) {
+			$method        = "_" . $key;
+			$this->$method = $value;
+		}
+	}
+
 	/**
 	 * Adds a route in the Router
 	 *
