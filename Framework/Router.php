@@ -45,5 +45,11 @@ class Router {
 
 	public function dispatch() {
 
+		foreach ( $this->_routes as $route ) {
+
+			if ( $route->matches( $this->_url ) ) {
+
+			}
+		}
 	}
 }

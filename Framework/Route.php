@@ -15,4 +15,16 @@ class Route {
 			$this->$method = $value;
 		}
 	}
+
+	/**
+	 * Checks if the url matches the Route
+	 *
+	 * @param $url
+	 *
+	 * @return int
+	 */
+	public function matches( $url ) {
+
+		return preg_match( "#^{$this->_pattern}$#", $url );
+	}
 }

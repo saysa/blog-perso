@@ -15,6 +15,8 @@ try {
 		$router->addRoute( new \Framework\Route( $route ) );
 	}
 
+	$router->dispatch();
+
 } catch ( Exception $e ) {
 
 	header( "Content-type: text/html" );
