@@ -49,6 +49,8 @@ class Router {
 
 			if ( $route->matches( $this->_url ) ) {
 
+				$this->_controller = $route->getController();
+				$this->_action     = $route->getAction();
 			}
 		}
 	}

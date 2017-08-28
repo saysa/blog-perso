@@ -27,4 +27,18 @@ class Route {
 
 		return preg_match( "#^{$this->_pattern}$#", $url );
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getController() {
+		return $this->_controller;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAction() {
+		return $this->_action;
+	}
 }
