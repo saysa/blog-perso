@@ -20,6 +20,6 @@ try {
 } catch ( Exception $e ) {
 
 	header( "Content-type: text/html" );
-	echo "An error occurred." . $e->getMessage();
+	echo "An error occurred. " . $e->getMessage();
 	exit;
 }
