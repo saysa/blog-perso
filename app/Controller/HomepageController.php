@@ -2,7 +2,9 @@
 
 namespace app\Controller;
 
-class HomepageController {
+use Framework\Controller;
+
+class HomepageController extends Controller {
 
 	public function indexAction() {
 
