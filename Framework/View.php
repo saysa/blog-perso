@@ -30,6 +30,44 @@ class View {
 	}
 
 	/**
+	 * Set the data depending on if $key is an array or a string
+	 *
+	 * @param $key
+	 * @param null $value
+	 *
+	 * @return $this
+	 */
+	public function set( $key, $value = null ) {
+		if ( is_array( $key ) ) {
+			foreach ( $key as $_key => $value ) {
+				$this->_set( $_key, $value );
+			}
+
+			return $this;
+		}
+
+		$this->_set( $key, $value );
+
+		return $this;
+	}
+
+	/**
+	 * Really set the data
+	 *
+	 * @param $key
+	 * @param $value
+	 *
+	 * @throws \Exception
+	 */
+	protected function _set( $key, $value ) {
+		if ( ! is_string( $key ) && ! is_numeric( $key ) ) {
+			throw new \Exception( "Key must be a string or a number" );
+		}
+
+		$this->_data[ $key ] = $value;
+	}
+
+	/**
 	 * @param string $file
 	 */
 	public function setFile( $file ) {
