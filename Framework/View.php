@@ -17,15 +17,15 @@ class View {
 	/**
 	 * Get view content from the file
 	 *
-	 * @return bool|string
+	 * @return string | null
 	 */
-	public function getViewContent() {
+	public function getViewFile() {
 
 		if ( file_exists( $this->_file ) ) {
-			return file_get_contents( $this->_file );
+			return $this->_file;
 		}
 
-		return false;
+		return null;
 	}
 
 	/**
