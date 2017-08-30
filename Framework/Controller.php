@@ -19,8 +19,9 @@ class Controller {
 	 */
 	public function render() {
 		header( "Content-type: text/html" );
+		$this->_view->set( "actionFile", $this->_view->getViewFile() ); // pass the actionView to the view
 		$data = $this->_view->getData(); // pass custom data to the view
-		include $this->_view->getViewFile();
+		include $this->_view->getViewLayout(); // show the main layout by default
 	}
 
 	public function __destruct() {

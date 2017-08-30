@@ -5,6 +5,6 @@
     <title>Mon blog</title>
 </head>
 <body>
-
+<?php include $data['actionFile']; ?>
 </body>
 </html>

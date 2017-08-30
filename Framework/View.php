@@ -30,6 +30,15 @@ class View {
 	}
 
 	/**
+	 * returns the main layout file path
+	 *
+	 * @return string
+	 */
+	public function getViewLayout() {
+		return APP_PATH . "/app/views/layouts/standard.php";
+	}
+
+	/**
 	 * Set the data depending on if $key is an array or a string
 	 *
 	 * @param $key
