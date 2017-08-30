@@ -9,4 +9,8 @@ class BlogController extends Controller {
 	public function indexAction() {
 
 	}
+
+	public function addAction() {
+
+	}
 }
