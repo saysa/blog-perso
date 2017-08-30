@@ -19,4 +19,11 @@ class Database {
 
 		return $this;
 	}
+
+	/**
+	 * @return \PDO
+	 */
+	public function getPdo() {
+		return $this->_pdo;
+	}
 }

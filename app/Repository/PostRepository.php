@@ -7,8 +7,24 @@ use Framework\Repository;
 
 class PostRepository extends Repository {
 
-	public function add( Entity $entity ) {
-		// TODO: Implement add() method.
+	public function add( Entity $post ) {
+
+		$st = $this->_pdo->prepare( 'INSERT INTO post SET
+			title = :title,
+			lead = :lead,
+			content = :content,
+			author = :author,
+			created = NOW(),
+			modified = NOW()
+		' );
+
+
+		$st->bindValue( ":title", $post->getTitle() );
+		$st->bindValue( ":lead", $post->getLead() );
+		$st->bindValue( ":content", $post->getContent() );
+		$st->bindValue( ":author", $post->getAuthor() );
+
+		$st->execute();
 	}
 
 	public function delete( Entity $form ) {
