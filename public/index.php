@@ -7,6 +7,8 @@ try {
 	require( "../Framework/Core.php" );
 	Framework\Core::initialize();
 
+	$config = yaml_parse( file_get_contents( APP_PATH . "/app/configuration/config.yml" ) );
+
 	$router = new \Framework\Router( array(
 		"url" => trim( $_SERVER['REQUEST_URI'], "/" ),
 	) );
