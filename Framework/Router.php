@@ -69,4 +69,18 @@ class Router {
 			}
 		}
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getController() {
+		return $this->_controller;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAction() {
+		return $this->_action;
+	}
 }
