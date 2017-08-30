@@ -19,6 +19,7 @@ class Controller {
 	 */
 	public function render() {
 		header( "Content-type: text/html" );
+		$data = $this->_view->getData(); // pass custom data to the view
 		include $this->_view->getViewFile();
 	}
 
