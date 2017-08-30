@@ -2,7 +2,7 @@
 
 namespace Framework;
 
-class Repository {
+abstract class Repository {
 
 	protected $_database;
 
@@ -11,23 +11,13 @@ class Repository {
 		$this->_database = Registry::get( "database" );
 	}
 
-	public function add( Entity $entity ) {
+	abstract function add( Entity $entity );
 
-	}
+	abstract function delete( Entity $form );
 
-	public function delete( Entity $form ) {
+	abstract function get( $id );
 
-	}
+	abstract function update( Entity $form );
 
-	public function get( $id ) {
-
-	}
-
-	public function update( Entity $form ) {
-
-	}
-
-	public function getList() {
-
-	}
+	abstract function getList();
 }
