@@ -10,7 +10,7 @@ class Controller {
 
 		$router      = Registry::get( "router" );
 		$this->_view = new View( array(
-			"file" => APP_PATH . "/app/views/{$router->getController()}/{$router->getAction()}.tpl",
+			"file" => APP_PATH . "/app/views/{$router->getController()}/{$router->getAction()}.php",
 		) );
 	}
 
@@ -19,7 +19,8 @@ class Controller {
 	 */
 	public function render() {
 		header( "Content-type: text/html" );
-		echo $this->_view->getViewContent();
+		$data = $this->_view->getData(); // pass custom data to the view
+		include $this->_view->getViewFile();
 	}
 
 	public function __destruct() {
