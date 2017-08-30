@@ -7,6 +7,11 @@ try {
 	require( "../Framework/Core.php" );
 	Framework\Core::initialize();
 
+	// loads and initializes the Database class
+	$config = yaml_parse( file_get_contents( APP_PATH . "/app/configuration/config.yml" ) );
+	$database = new \Framework\Database( $config['database'] );
+	\Framework\Registry::set( "database", $database->connect() );
+
 	$router = new \Framework\Router( array(
 		"url" => trim( $_SERVER['REQUEST_URI'], "/" ),
 	) );
