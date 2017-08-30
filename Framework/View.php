@@ -4,7 +4,8 @@ namespace Framework;
 
 class View {
 
-	protected $_file;
+	protected $_actionFile;
+	protected $_layoutFile;
 	protected $_data = array();
 
 	public function __construct( $options = array() ) {
@@ -16,17 +17,26 @@ class View {
 	}
 
 	/**
-	 * Get view content from the file
+	 * Get the path to the file that contains the action-view
 	 *
 	 * @return string | null
 	 */
-	public function getViewFile() {
+	public function getActionFile() {
 
-		if ( file_exists( $this->_file ) ) {
-			return $this->_file;
+		if ( file_exists( $this->_actionFile ) ) {
+			return $this->_actionFile;
 		}
 
 		return null;
+	}
+
+	/**
+	 * returns the main layout file path
+	 *
+	 * @return string
+	 */
+	public function getViewLayout() {
+		return $this->_layoutFile;
 	}
 
 	/**

@@ -10,7 +10,8 @@ class Controller {
 
 		$router      = Registry::get( "router" );
 		$this->_view = new View( array(
-			"file" => APP_PATH . "/app/views/{$router->getController()}/{$router->getAction()}.php",
+			"layoutFile" => APP_PATH . "/app/views/layouts/standard.php",
+			"actionFile" => APP_PATH . "/app/views/{$router->getController()}/{$router->getAction()}.php",
 		) );
 	}
 
@@ -19,8 +20,9 @@ class Controller {
 	 */
 	public function render() {
 		header( "Content-type: text/html" );
+		$this->_view->set( "actionFile", $this->_view->getActionFile() ); // pass the actionView to the view
 		$data = $this->_view->getData(); // pass custom data to the view
-		include $this->_view->getViewFile();
+		include $this->_view->getViewLayout(); // show the main layout by default
 	}
 
 	public function __destruct() {
