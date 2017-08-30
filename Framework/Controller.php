@@ -13,4 +13,16 @@ class Controller {
 			"file" => APP_PATH . "/app/views/{$router->getController()}/{$router->getAction()}.tpl",
 		) );
 	}
+
+	/**
+	 * Renders the view
+	 */
+	public function render() {
+		header( "Content-type: text/html" );
+		echo $this->_view->getViewContent();
+	}
+
+	public function __destruct() {
+		$this->render();
+	}
 }

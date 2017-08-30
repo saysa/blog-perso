@@ -15,6 +15,20 @@ class View {
 	}
 
 	/**
+	 * Get view content from the file
+	 *
+	 * @return bool|string
+	 */
+	public function getViewContent() {
+
+		if ( file_exists( $this->_file ) ) {
+			return file_get_contents( $this->_file );
+		}
+
+		return false;
+	}
+
+	/**
 	 * @param string $file
 	 */
 	public function setFile( $file ) {
