@@ -16,5 +16,10 @@ class Routes {
 			"controller" => "homepage",
 			"action"     => "index",
 		),
+		array(
+			"pattern"    => "blog",
+			"controller" => "blog",
+			"action"     => "index",
+		),
 	);
 }
