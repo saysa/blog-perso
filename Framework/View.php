@@ -5,6 +5,7 @@ namespace Framework;
 class View {
 
 	protected $_actionFile;
+	protected $_layoutFile;
 	protected $_data = array();
 
 	public function __construct( $options = array() ) {
@@ -35,7 +36,7 @@ class View {
 	 * @return string
 	 */
 	public function getViewLayout() {
-		return APP_PATH . "/app/views/layouts/standard.php";
+		return $this->_layoutFile;
 	}
 
 	/**

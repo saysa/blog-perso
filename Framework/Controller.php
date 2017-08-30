@@ -10,6 +10,7 @@ class Controller {
 
 		$router      = Registry::get( "router" );
 		$this->_view = new View( array(
+			"layoutFile" => APP_PATH . "/app/views/layouts/standard.php",
 			"actionFile" => APP_PATH . "/app/views/{$router->getController()}/{$router->getAction()}.php",
 		) );
 	}
