@@ -10,6 +10,9 @@ class BlogController extends Controller {
 
 	public function indexAction() {
 
+		$dm    = new PostRepository();
+		$posts = $dm->getList();
+		$this->_view->set( "posts", $posts );
 	}
 
 	public function addAction() {
