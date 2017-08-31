@@ -4,11 +4,11 @@ namespace Framework;
 
 abstract class Repository {
 
-	protected $_database;
+	protected $_pdo;
 
 	public function __construct() {
 
-		$this->_database = Registry::get( "database" );
+		$this->_pdo = Registry::get( "database" )->getPdo();
 	}
 
 	abstract function add( Entity $entity );
