@@ -2,6 +2,7 @@
 
 namespace app\Repository;
 
+use app\Entity\Post;
 use Framework\Entity;
 use Framework\Repository;
 
@@ -40,6 +41,17 @@ class PostRepository extends Repository {
 	}
 
 	public function getList() {
-		// TODO: Implement getList() method.
+		$posts = array();
+
+		/** @var \PDO $pdo */
+		$pdo = $this->_pdo;
+		/** @var \PDOStatement $st */
+		$st = $pdo->query( 'SELECT id, title, lead, content, author FROM post' );
+
+		while ( $donnees = $st->fetch( \PDO::FETCH_ASSOC ) ) {
+			$posts[] = new Post( $donnees );
+		}
+
+		return $posts;
 	}
 }
