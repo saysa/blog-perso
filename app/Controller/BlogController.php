@@ -28,4 +28,7 @@ class BlogController extends Controller {
 			) ) );
 		}
 	}
+
+	public function editAction($id) {
+	}
 }
