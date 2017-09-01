@@ -26,5 +26,10 @@ class Routes {
 			"controller" => "blog",
 			"action"     => "add",
 		),
+		array(
+			"pattern"    => "blog/edit/:id",
+			"controller" => "blog",
+			"action"     => "edit",
+		),
 	);
 }
