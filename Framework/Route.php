@@ -119,4 +119,11 @@ class Route {
 	public function getAction() {
 		return $this->_action;
 	}
+
+	/**
+	 * @return array
+	 */
+	public function getParameters() {
+		return $this->_parameters;
+	}
 }

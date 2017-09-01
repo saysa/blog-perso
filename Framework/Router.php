@@ -64,8 +64,17 @@ class Router {
 					throw new \Exception( "Action {$this->_action}Action not found" );
 				}
 
-				$action = $this->_action . "Action";
-				$controller->$action();
+				if ( sizeof( $route->getParameters() ) >= 1 ) {
+					// executes action with parameters
+					call_user_func_array( array(
+						$controller,
+						$this->_action . "Action"
+					), $route->getParameters() );
+				} else {
+					// executes the action without parameters
+					$action = $this->_action . "Action";
+					$controller->$action();
+				}
 			}
 		}
 	}
