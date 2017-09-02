@@ -1,5 +1,11 @@
 <h1>Modifier le post : <?= $data['post']->getTitle() ?></h1>
 
+<?php if ( isset( $data['success'] ) ): ?>
+    <div>
+        Le post a bien été modifié
+    </div>
+<?php endif; ?>
+
 <form method="post" action="">
     <div>
         <label for="title">Titre :</label><br>

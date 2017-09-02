@@ -46,6 +46,8 @@ class BlogController extends Controller {
 
 				$dm = new PostRepository();
 				$dm->update( $post );
+
+				$this->_view->set( "success", true );
 			}
 
 			$this->_view->set( "post", $post );
