@@ -6,10 +6,25 @@ use Framework\Entity;
 
 class Post extends Entity {
 
+	private $_id;
 	private $_title;
 	private $_lead;
 	private $_content;
 	private $_author;
+
+	/**
+	 * @return int
+	 */
+	public function getId() {
+		return $this->_id;
+	}
+
+	/**
+	 * @param int $id
+	 */
+	public function setId( $id ) {
+		$this->_id = (int) $id;
+	}
 
 	/**
 	 * @return string
