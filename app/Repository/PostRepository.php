@@ -36,8 +36,22 @@ class PostRepository extends Repository {
 		// TODO: Implement update() method.
 	}
 
+	/**
+	 * Get the Post with id $id
+	 *
+	 * @param $id
+	 *
+	 * @return Post
+	 */
 	public function get( $id ) {
-		// TODO: Implement get() method.
+		$id = (int) $id;
+		/** @var \PDO $pdo */
+		$pdo = $this->_pdo;
+
+		$st   = $pdo->query( 'SELECT id, title, lead, content, author, created, modified FROM post WHERE id = ' . $id );
+		$data = $st->fetch( \PDO::FETCH_ASSOC );
+
+		return new Post( $data );
 	}
 
 	public function getList() {

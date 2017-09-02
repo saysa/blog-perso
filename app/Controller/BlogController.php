@@ -29,6 +29,9 @@ class BlogController extends Controller {
 		}
 	}
 
-	public function editAction($id) {
+	public function editAction( $id ) {
+
+		$dm   = new PostRepository();
+		$post = $dm->get( $id );
 	}
 }
