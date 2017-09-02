@@ -34,6 +34,7 @@ class BlogController extends Controller {
 		$dm = new PostRepository();
 		if ( $post = $dm->get( $id ) ) {
 
+			$this->_view->set( "post", $post );
 		} else {
 			// TODO : handle error
 		}
