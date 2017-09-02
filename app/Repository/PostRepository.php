@@ -41,7 +41,7 @@ class PostRepository extends Repository {
 	 *
 	 * @param $id
 	 *
-	 * @return Post
+	 * @return Post|bool
 	 */
 	public function get( $id ) {
 		$id = (int) $id;
@@ -51,7 +51,11 @@ class PostRepository extends Repository {
 		$st   = $pdo->query( 'SELECT id, title, lead, content, author, created, modified FROM post WHERE id = ' . $id );
 		$data = $st->fetch( \PDO::FETCH_ASSOC );
 
-		return new Post( $data );
+		if ( $data ) {
+			return new Post( $data );
+		}
+
+		return false;
 	}
 
 	public function getList() {
