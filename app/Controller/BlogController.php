@@ -29,6 +29,30 @@ class BlogController extends Controller {
 		}
 	}
 
-	public function editAction($id) {
+	public function editAction( $id ) {
+
+		$dm = new PostRepository();
+		if ( $post = $dm->get( $id ) ) {
+
+			if ( filter_has_var( INPUT_POST, 'submit' ) ) {
+
+				$post = new Post( array(
+					"id"      => $id,
+					"title"   => filter_input( INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS ),
+					"lead"    => filter_input( INPUT_POST, 'lead', FILTER_SANITIZE_SPECIAL_CHARS ),
+					"content" => filter_input( INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS ),
+					"author"  => filter_input( INPUT_POST, 'author', FILTER_SANITIZE_SPECIAL_CHARS ),
+				) );
+
+				$dm = new PostRepository();
+				$dm->update( $post );
+
+				$this->_view->set( "success", true );
+			}
+
+			$this->_view->set( "post", $post );
+		} else {
+			// TODO : handle error
+		}
 	}
 }
