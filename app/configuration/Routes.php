@@ -31,5 +31,10 @@ class Routes {
 			"controller" => "blog",
 			"action"     => "edit",
 		),
+		array(
+			"pattern"    => "blog/:id",
+			"controller" => "blog",
+			"action"     => "show",
+		),
 	);
 }
