@@ -55,4 +55,7 @@ class BlogController extends Controller {
 			// TODO : handle error
 		}
 	}
+
+	public function showAction( $id ) {
+	}
 }
