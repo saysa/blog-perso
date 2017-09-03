@@ -1,6 +1,7 @@
 <?php
 
 define( "APP_PATH", dirname( dirname( __FILE__ ) ) );
+define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . '/' );
 
 try {
 
