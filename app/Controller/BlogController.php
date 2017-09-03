@@ -57,5 +57,10 @@ class BlogController extends Controller {
 	}
 
 	public function showAction( $id ) {
+
+		$dm   = new PostRepository();
+		$post = $dm->get( $id );
+
+		$this->_view->set( "post", $post );
 	}
 }
