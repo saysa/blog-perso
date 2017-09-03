@@ -28,8 +28,9 @@ class PostRepository extends Repository {
 		$st->execute();
 	}
 
-	public function delete( Entity $form ) {
-		// TODO: Implement delete() method.
+	public function delete( Entity $post ) {
+
+		$this->_pdo->exec( 'DELETE FROM post WHERE id = ' . $post->getId() );
 	}
 
 	public function update( Entity $post ) {
