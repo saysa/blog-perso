@@ -56,6 +56,9 @@ class BlogController extends Controller {
 		}
 	}
 
+	public function deleteAction( $id ) {
+	}
+
 	public function showAction( $id ) {
 
 		$dm   = new PostRepository();

@@ -32,6 +32,11 @@ class Routes {
 			"action"     => "edit",
 		),
 		array(
+			"pattern"    => "blog/delete/:id",
+			"controller" => "blog",
+			"action"     => "delete",
+		),
+		array(
 			"pattern"    => "blog/:id",
 			"controller" => "blog",
 			"action"     => "show",
