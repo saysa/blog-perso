@@ -75,6 +75,8 @@ class Router {
 					$action = $this->_action . "Action";
 					$controller->$action();
 				}
+
+				break;
 			}
 		}
 	}
