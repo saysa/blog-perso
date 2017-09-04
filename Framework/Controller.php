@@ -13,6 +13,8 @@ class Controller {
 			"layoutFile" => APP_PATH . "/app/views/layouts/standard.php",
 			"actionFile" => APP_PATH . "/app/views/{$router->getController()}/{$router->getAction()}.php",
 		) );
+
+		$this->_view->set( "base_url", BASE_URL );
 	}
 
 	/**
