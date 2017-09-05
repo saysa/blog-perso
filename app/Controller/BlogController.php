@@ -12,7 +12,7 @@ class BlogController extends Controller {
 
 		$dm    = new PostRepository();
 		$posts = $dm->getList();
-		$this->_view->set( "posts", $posts );
+		$this->_actionView->set( "posts", $posts );
 	}
 
 	public function addAction() {
