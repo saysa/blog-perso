@@ -4,8 +4,8 @@ namespace Framework;
 
 class View {
 
-	protected $_actionFile;
-	protected $_layoutFile;
+	protected $_file;
+	protected $_twig;
 	protected $_data = array();
 
 	public function __construct( $options = array() ) {
@@ -14,29 +14,20 @@ class View {
 			$method        = "_" . $key;
 			$this->$method = $value;
 		}
+
+		$this->_twig = Registry::get( "twig" );
 	}
 
 	/**
-	 * Get the path to the file that contains the action-view
-	 *
-	 * @return string | null
-	 */
-	public function getActionFile() {
-
-		if ( file_exists( $this->_actionFile ) ) {
-			return $this->_actionFile;
-		}
-
-		return null;
-	}
-
-	/**
-	 * returns the main layout file path
+	 * Returns HTML (Twig) content from the file $this->_file
 	 *
 	 * @return string
 	 */
-	public function getViewLayout() {
-		return $this->_layoutFile;
+	public function getViewContent() {
+
+		/** @var \Twig_Environment $twig */
+		$twig = $this->_twig;
+		return $twig->render( $this->_file, $this->getData() );
 	}
 
 	/**

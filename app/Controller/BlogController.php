@@ -12,7 +12,7 @@ class BlogController extends Controller {
 
 		$dm    = new PostRepository();
 		$posts = $dm->getList();
-		$this->_view->set( "posts", $posts );
+		$this->_actionView->set( "posts", $posts );
 	}
 
 	public function addAction() {
@@ -47,10 +47,10 @@ class BlogController extends Controller {
 				$dm = new PostRepository();
 				$dm->update( $post );
 
-				$this->_view->set( "success", true );
+				$this->_actionView->set( "success", true );
 			}
 
-			$this->_view->set( "post", $post );
+			$this->_actionView->set( "post", $post );
 		} else {
 			// TODO : handle error
 		}
@@ -69,6 +69,6 @@ class BlogController extends Controller {
 		$dm   = new PostRepository();
 		$post = $dm->get( $id );
 
-		$this->_view->set( "post", $post );
+		$this->_actionView->set( "post", $post );
 	}
 }

@@ -4,3 +4,5 @@ database:
     password:
     dbname:
     port: 3306
+
+debug: false

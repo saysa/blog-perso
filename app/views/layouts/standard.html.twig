@@ -7,9 +7,9 @@
 <body>
 <nav>
     <ul>
-        <li><a href="<?= $data['base_url'] ?>blog/add">Add a Post</a></li>
+        <li><a href="{{ base_url }}blog/add">Add a Post</a></li>
     </ul>
 </nav>
-<?php include $data['actionFile']; ?>
+{{ actionFile }}
 </body>
 </html>

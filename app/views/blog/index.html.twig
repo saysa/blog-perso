@@ -1,13 +1,13 @@
 <h1>Liste des Articles</h1>
 
-<?php foreach ( $data['posts'] as $post ): ?>
+{% for post in posts %}
     <article>
-        <h2><?= $post->getTitle(); ?></h2>
+        <h2>{{ post.title }}</h2>
         <p>
-			<?= $post->getLead(); ?>
+			{{ post.lead }}
         </p>
         <div>
             <a href="">En savoir plus</a>
         </div>
     </article>
-<?php endforeach; ?>
+{% endfor %}
