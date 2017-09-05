@@ -1,0 +1,29 @@
+<h1>Modifier le post : {{ post.title }}</h1>
+
+{% if success %}
+    <div>
+        Le post a bien été modifié
+    </div>
+{% endif %}
+
+<form method="post" action="">
+    <div>
+        <label for="title">Titre :</label><br>
+        <input type="text" name="title" id="title" value="{{ post.title }}">
+    </div>
+    <div>
+        <label for="lead">Chapô :</label><br>
+        <textarea name="lead" id="lead" cols="50" rows="4">{{ post.lead }}</textarea>
+    </div>
+    <div>
+        <label for="content">Contenu :</label><br>
+        <textarea name="content" id="content" cols="50" rows="8">{{ post.content }}</textarea>
+    </div>
+    <div>
+        <label for="author">Auteur :</label><br>
+        <input type="text" name="author" id="author" value="{{ post.author }}">
+    </div>
+    <div>
+        <input type="submit" name="submit" value="Modifier le Post">
+    </div>
+</form>
