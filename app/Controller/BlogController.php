@@ -69,6 +69,6 @@ class BlogController extends Controller {
 		$dm   = new PostRepository();
 		$post = $dm->get( $id );
 
-		$this->_view->set( "post", $post );
+		$this->_actionView->set( "post", $post );
 	}
 }
