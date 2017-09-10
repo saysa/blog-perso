@@ -12,7 +12,7 @@ class Routes {
 
 	public static $routes = array(
 		array(
-			"pattern"    => "homepage",
+			"pattern"    => "",
 			"controller" => "homepage",
 			"action"     => "index",
 		),
