@@ -19,6 +19,7 @@ class Controller {
 		) );
 
 		$this->_layoutView->set( "base_url", BASE_URL );
+		$this->_actionView->set( "base_url", BASE_URL );
 	}
 
 	/**
