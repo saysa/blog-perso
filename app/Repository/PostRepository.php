@@ -83,7 +83,7 @@ class PostRepository extends Repository {
 		/** @var \PDO $pdo */
 		$pdo = $this->_pdo;
 		/** @var \PDOStatement $st */
-		$st = $pdo->query( 'SELECT id, title, lead, content, author FROM post' );
+		$st = $pdo->query( 'SELECT id, title, lead, content, author, modified FROM post' );
 
 		while ( $donnees = $st->fetch( \PDO::FETCH_ASSOC ) ) {
 			$posts[] = new Post( $donnees );
