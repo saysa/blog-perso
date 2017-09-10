@@ -3,6 +3,7 @@
 define( "APP_PATH", dirname( dirname( __FILE__ ) ) );
 define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . '/' );
 setlocale( LC_TIME, 'fra', 'fr_FR' );
+require_once APP_PATH . '/vendor/autoload.php';
 
 try {
 
@@ -11,6 +12,7 @@ try {
 
 	// loads and initializes the Database class
 	$config = yaml_parse( file_get_contents( APP_PATH . "/app/configuration/config.yml" ) );
+	\Framework\Registry::set( "config", (object) $config );
 	$database = new \Framework\Database( $config['database'] );
 	\Framework\Registry::set( "database", $database->connect() );
 
