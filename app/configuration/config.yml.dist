@@ -5,4 +5,9 @@ database:
     dbname:
     port: 3306
 
+swiftmailer:
+    mailer_host: smtp.gmail.com
+    mailer_user: account@gmail.com
+    mailer_password: gmail_password
+
 debug: false
