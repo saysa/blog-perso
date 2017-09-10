@@ -13,6 +13,16 @@ class Post extends Entity {
 	private $_author;
 
 	/**
+	 * Returns formatted date
+	 *
+	 * @return string
+	 */
+	public function getModifiedDate() {
+
+		return strftime( '%A %d %B %Y à %H:%M', strtotime( $this->getModified() ) );
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getId() {
