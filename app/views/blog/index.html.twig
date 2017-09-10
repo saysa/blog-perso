@@ -9,5 +9,8 @@
         <div>
             <a href="{{ base_url }}blog/{{ post.id }}">En savoir plus</a>
         </div>
+        <div>
+            Modifié le {{ post.getModifiedDate }}
+        </div>
     </article>
 {% endfor %}
