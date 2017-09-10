@@ -2,6 +2,7 @@
 
 define( "APP_PATH", dirname( dirname( __FILE__ ) ) );
 define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . '/' );
+setlocale( LC_TIME, 'fra', 'fr_FR' );
 
 try {
 

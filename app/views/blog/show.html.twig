@@ -1,7 +1,7 @@
 <h1>{{ post.title }}</h1>
 
 <p>
-    Par {{ post.author }}<br>
+    Par {{ post.author }}, le {{ post.getModifiedDate }}<br>
     <a href="{{ base_url }}blog/edit/{{ post.id }}">Modifier</a>
 </p>
 
