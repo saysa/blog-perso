@@ -18,7 +18,6 @@ class App
     private function run()
     {
         try {
-            Core::initialize();
 
             $config = yaml_parse(file_get_contents(APP_PATH."/app/configuration/config.yml"));
 
