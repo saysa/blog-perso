@@ -4,6 +4,8 @@ namespace Framework;
 
 class App
 {
+    private $container;
+
     public function __construct()
     {
         $this->init();
@@ -12,6 +14,7 @@ class App
 
     private function init()
     {
+        $this->container = new Container();
         $this->define();
     }
 
