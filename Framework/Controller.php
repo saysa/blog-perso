@@ -6,15 +6,17 @@ class Controller {
 
 	protected $_actionView;
 	protected $_layoutView;
+	protected $container;
 
-	public function __construct() {
+	public function __construct(Container $container) {
 
-		$router      = Registry::get( "router" );
-		$this->_actionView = new View( array(
+        $this->container = $container;
+		$router      = $this->container->get('router');
+		$this->_actionView = new View( $this->container, array(
 			"file" => "{$router->getController()}/{$router->getAction()}.html.twig",
 		) );
 
-		$this->_layoutView = new View( array(
+		$this->_layoutView = new View( $this->container, array(
 			"file" => "layouts/standard.html.twig",
 		) );
 

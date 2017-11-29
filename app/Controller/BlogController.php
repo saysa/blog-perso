@@ -10,7 +10,7 @@ class BlogController extends Controller {
 
 	public function indexAction() {
 
-		$dm    = new PostRepository();
+		$dm    = new PostRepository($this->container);
 		$posts = $dm->getList();
 		$this->_actionView->set( "posts", $posts );
 	}
@@ -19,7 +19,7 @@ class BlogController extends Controller {
 
 		if ( filter_has_var( INPUT_POST, 'submit' ) ) {
 
-			$dm = new PostRepository();
+			$dm = new PostRepository($this->container);
 			$dm->add( new Post( array(
 				"title"   => filter_input( INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS ),
 				"lead"    => filter_input( INPUT_POST, 'lead', FILTER_SANITIZE_SPECIAL_CHARS ),
@@ -31,7 +31,7 @@ class BlogController extends Controller {
 
 	public function editAction( $id ) {
 
-		$dm = new PostRepository();
+		$dm = new PostRepository($this->container);
 		if ( $post = $dm->get( $id ) ) {
 
 			if ( filter_has_var( INPUT_POST, 'submit' ) ) {
@@ -44,7 +44,7 @@ class BlogController extends Controller {
 					"author"  => filter_input( INPUT_POST, 'author', FILTER_SANITIZE_SPECIAL_CHARS ),
 				) );
 
-				$dm = new PostRepository();
+				$dm = new PostRepository($this->container);
 				$dm->update( $post );
 
 				$this->_actionView->set( "success", true );
@@ -58,7 +58,7 @@ class BlogController extends Controller {
 
 	public function deleteAction( $id ) {
 
-		$dm   = new PostRepository();
+		$dm   = new PostRepository($this->container);
 		$post = $dm->get( $id );
 
 		$dm->delete( $post );
@@ -66,7 +66,7 @@ class BlogController extends Controller {
 
 	public function showAction( $id ) {
 
-		$dm   = new PostRepository();
+		$dm   = new PostRepository($this->container);
 		$post = $dm->get( $id );
 
 		$this->_actionView->set( "post", $post );
