@@ -8,13 +8,16 @@ class Router {
 	protected $_controller;
 	protected $_action;
 	protected $_routes = array();
+	protected $container;
 
-	public function __construct( $options = array() ) {
+	public function __construct(Container $container, $options = array() ) {
 
 		foreach ( $options as $key => $value ) {
 			$method        = "_" . $key;
 			$this->$method = $value;
 		}
+
+		$this->container = $container;
 	}
 
 	/**
@@ -54,7 +57,7 @@ class Router {
 
 				try {
 					$controllerClass = "\\app\\Controller\\" . ucfirst( $this->_controller ) . "Controller";
-					$controller      = new $controllerClass();
+					$controller      = new $controllerClass($this->container);
 
 				} catch ( \Exception $e ) {
 					throw new \Exception( "Controller {$this->_controller} not found." );

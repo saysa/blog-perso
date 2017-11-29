@@ -8,20 +8,41 @@ use Psr\Container\NotFoundExceptionInterface;
 
 class Container implements ContainerInterface
 {
+    /**
+     * @var array $registry
+     */
+    private $registry = [];
+
+    /**
+     * @param $id
+     * @param callable $callable
+     *
+     * @return $this
+     */
+    public function set($id, Callable $callable):Container
+    {
+        $this->registry[$id] = $callable;
+
+        return $this;
+    }
 
     /**
      * Finds an entry of the container by its identifier and returns it.
      *
      * @param string $id Identifier of the entry to look for.
      *
-     * @throws NotFoundExceptionInterface  No entry was found for **this** identifier.
-     * @throws ContainerExceptionInterface Error while retrieving the entry.
-     *
-     * @return mixed Entry.
+     * @return mixed No entry was found for **this** identifier.
+     * @throws \Exception
      */
     public function get($id)
     {
-        // TODO: Implement get() method.
+        if (! $this->has($id)) {
+            throw new \Exception('No entry for ' . $id);
+        } elseif (! is_callable($this->registry[$id])) {
+            throw new \Exception('Error while retrieving the entry');
+        } else {
+            return $this->registry[$id]();
+        }
     }
 
     /**
@@ -37,6 +58,6 @@ class Container implements ContainerInterface
      */
     public function has($id)
     {
-        // TODO: Implement has() method.
+        return isset($this->registry[$id]);
     }
 }

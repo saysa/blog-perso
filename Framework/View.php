@@ -7,15 +7,17 @@ class View {
 	protected $_file;
 	protected $_twig;
 	protected $_data = array();
+	protected $container;
 
-	public function __construct( $options = array() ) {
+	public function __construct( Container $container, $options = array() ) {
 
 		foreach ( $options as $key => $value ) {
 			$method        = "_" . $key;
 			$this->$method = $value;
 		}
+		$this->container = $container;
 
-		$this->_twig = Registry::get( "twig" );
+		$this->_twig = $this->container->get('twig');
 	}
 
 	/**

@@ -4,6 +4,9 @@ namespace Framework;
 
 class App
 {
+    /**
+     * @var $container Container
+     */
     private $container;
 
     public function __construct()
@@ -24,9 +27,13 @@ class App
 
             $config = yaml_parse(file_get_contents(APP_PATH."/app/configuration/config.yml"));
 
-            Registry::set("config", (object)$config);
-            $database = new Database($config['database']);
-            Registry::set("database", $database->connect());
+            $this->container->set('config', function () use ($config) {
+               return (object)$config;
+            });
+
+            $this->container->set('database', function () use ($config) {
+                return (new Database($config['database']))->connect();
+            });
 
             // set Twig in the Registry
             $loader = new \Twig_Loader_Filesystem(APP_PATH.'/app/views/');
@@ -34,12 +41,16 @@ class App
             if ($config['debug']) {
                 $twig->addExtension(new \Twig_Extension_Debug());
             }
-            Registry::set("twig", $twig);
+            $this->container->set('twig', function () use ($twig) {
+               return $twig;
+            });
 
-            $router = new Router(array(
+            $router = new Router($this->container, array(
                 "url" => trim($_SERVER['REQUEST_URI'], "/"),
             ));
-            Registry::set("router", $router);
+            $this->container->set('router', function () use ($router){
+               return $router;
+            });
             foreach (\app\configuration\Routes::$routes as $route) {
                 $router->addRoute(new Route($route));
             }

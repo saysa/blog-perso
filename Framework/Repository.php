@@ -5,10 +5,12 @@ namespace Framework;
 abstract class Repository {
 
 	protected $_pdo;
+	protected $container;
 
-	public function __construct() {
+	public function __construct(Container $container) {
 
-		$this->_pdo = Registry::get( "database" )->getPdo();
+	    $this->container = $container;
+		$this->_pdo = $this->container->get('database')->getPdo();
 	}
 
 	abstract function add( Entity $entity );
